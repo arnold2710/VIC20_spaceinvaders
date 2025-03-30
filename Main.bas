@@ -5,7 +5,6 @@
 !- line 1000 - 1130 start menu
 
 10 poke 36879,8
-15 print chr$(29)
 20 print chr$(147)
 30 sc=0:lv=0:hp=3
 40 gosub 1000
@@ -15,6 +14,7 @@
 100 end
 
 1000 print chr$(147)
+1005 print "{white}"
 1010 print "space invaders"
 1020 print "by arnold streck"
 1030 print "-----------------"

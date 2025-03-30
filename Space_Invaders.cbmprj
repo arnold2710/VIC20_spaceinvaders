@@ -20,7 +20,7 @@
     <AutoLaunchName>Space_Invaders.prg</AutoLaunchName>
     <NoSingleFileBuild>False</NoSingleFileBuild>
     <CreatedWithVersion>CBM prg Studio 4.5.0</CreatedWithVersion>
-    <HasGitRepo>False</HasGitRepo>
+    <HasGitRepo>True</HasGitRepo>
     <OutputBinDir />
     <GitIgnoreList />
     <UsingKickAssembler>False</UsingKickAssembler>
