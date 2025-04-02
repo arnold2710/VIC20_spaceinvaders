@@ -12,8 +12,18 @@
 !- line 5000 - 5020 move player right
 !- line 5030 - 5050 move player left
 !- line 5200 - 5240 shoot shot
+!- line 5400 - 5460 refresh score
 
 10 poke 36879,8
+11 poke 52,28:poke 56,28: clr
+12 for i=7168to7831:poke i, peek(i+25600):next
+13 poke 36869,255
+14 for c=7168to7175:read a:poke c,a :next
+15 data 24,60,60,126,60,60,90,90
+16 for c=7664to7671:read a:poke c,a:next
+17 data 36,24,60,90,255,189,165,24
+18 for c=7392to7399:read a:poke c,a:next
+19 data 60,126,126,126,60,24,24,24
 20 print chr$(147)
 30 sc=0:lv=0:hp=3
 40 gosub 1000
@@ -56,9 +66,9 @@
 2119 gosub 3000
 2129 return
 
-3000 poke 7680+sy*22+sx,81
+3000 poke 7680+sy*22+sx,0
 3010 for i=1to10
-3020 if a(i)=1 then poke 7680+y(i)*22+x(i),90
+3020 if a(i)=1 then poke 7680+y(i)*22+x(i),62
 3030 next
 3040 return
 
@@ -73,17 +83,17 @@
 4070 return
 
 5000 poke 7680+sy*22+(sx-1),32
-5010 poke 7680+sy*22+sx,81
+5010 poke 7680+sy*22+sx,0
 5020 return
 
 5030 poke 7680+sy*22+(sx+1),32
-5040 poke 7680+sy*22+sx,81
+5040 poke 7680+sy*22+sx,0
 5050 return
 
 5200 poke 7680+my*22+mx,32
 5210 my=my-1
 5220 if my<2 then mf=0:return
-5230 poke 7680+my*22+mx,88
+5230 poke 7680+my*22+mx,28
 5235 for i=1to10
 5238 if a(i)=1 and x(i)=mx and y(i)=my then gosub 5400:return
 5239 next
@@ -94,5 +104,7 @@
 5420 a(i)=0:ac=ac-1:mf=0
 5430 sc=sc+1
 5440 cs$="score:"+mid$(str$(sc),2)+" level:"+mid$(str$(ls),2)+" hp:"+mid$(str$(hp),2)
+5444 print "{home}"
+5446 print cs$
 5450 poke 36877,220:for t=1to100:next:poke 36877,0
 5460 return
